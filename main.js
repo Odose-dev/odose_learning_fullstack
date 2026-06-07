@@ -41,4 +41,3 @@ console.log(name2, first);
 //Output Jane 80
 
 
-// nice work done boss
