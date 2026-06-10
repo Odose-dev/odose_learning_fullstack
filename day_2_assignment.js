@@ -12,18 +12,34 @@ const user =
         address:'Igboefon Lagos'
     }
 const assets = ['car', 'house', 'stocks'];
+
 const user_assets = {...user, assets}
 console.log(user_assets)
+
+
+// const updatedUser = {
+//     ...user, 
+//     assets: [...assets]
+// }
+// console.log(updatedUser)
+
+
+
 
 /*
 Question 2
 Using map, add  2 to all numbers in the array
 */
 let numbers = [1, 2, 3, 4, 5]
-numbers.map((item) =>  {
-     addedNumber = item + 2
-     return (console.log(addedNumber))
-})
+// numbers.map((item) =>  {
+//      addedNumber = item + 2
+//      return (console.log(addedNumber))
+// })
+
+
+//better way
+const addedNumbers = numbers.map((item) => item + 2)
+console.log(...addedNumbers)
 
 
  

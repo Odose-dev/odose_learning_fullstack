@@ -133,15 +133,15 @@ console.log(group);
 
 
    //this 
-   console.log(this)
+//    console.log(this)
 
-   const user = {
-    name: "ezekiel",
+//    const user = {
+//     name: "ezekiel",
 
-    sayHello: function() {
-        console.log(this)
-    }
-   }
+//     sayHello: function() {
+//         console.log(this)
+//     }
+//    }
 
 //    user.sayHello()
 
@@ -156,3 +156,56 @@ console.log(group);
     //Promises
     //async/await
     //Error Handling
+
+    console.log(1)
+
+    setTimeout(() => {
+        console.log(2)
+    }, 0)
+
+    Promise.resolve(3).then((result) => console.log(result))
+
+    console.log(4)
+
+    //creating a promise
+    const payment = new Promise((resolve, reject) => {
+
+        const isPaymentSuccessful = true; // Simulate payment success or failure
+
+        if(isPaymentSuccessful) {
+            resolve("Payment successful!");
+        } else {
+            reject("Payment failed!");
+        }
+    })
+
+
+    //result of the promise
+    payment.then((result) => {
+        console.log(result)
+
+    }).catch((result) => {
+        console.log(result)
+    })
+  
+
+// *******************
+    // class 4
+// *******************
+//Focus: Understanding Asynchronous JavaScript
+
+    //Promises continued
+
+    //async/await
+
+    //Fetch API
+
+    //Error Handling
+
+    // API Consumption
+
+    //Event Loop Overview
+
+    //Mini Practice Project
+
+        //url to get dummy user data: https://jsonplaceholder.typicode.com/posts
