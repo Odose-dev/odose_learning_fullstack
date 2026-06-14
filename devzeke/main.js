@@ -157,36 +157,36 @@ console.log(group);
     //async/await
     //Error Handling
 
-    console.log(1)
+    // console.log(1)
 
-    setTimeout(() => {
-        console.log(2)
-    }, 0)
+    // setTimeout(() => {
+    //     console.log(2)
+    // }, 2000)
 
-    Promise.resolve(3).then((result) => console.log(result))
+    // Promise.resolve(3).then((result) => console.log(result))
 
-    console.log(4)
+    // console.log(4)
 
     //creating a promise
-    const payment = new Promise((resolve, reject) => {
+    // const payment = new Promise((resolve, reject) => {
 
-        const isPaymentSuccessful = true; // Simulate payment success or failure
+    //     const isPaymentSuccessful = true; // Simulate payment success or failure
 
-        if(isPaymentSuccessful) {
-            resolve("Payment successful!");
-        } else {
-            reject("Payment failed!");
-        }
-    })
+    //     if(isPaymentSuccessful) {
+    //         resolve("Payment successful!");
+    //     } else {
+    //         reject("Payment failed!");
+    //     }
+    // })
 
 
     //result of the promise
-    payment.then((result) => {
-        console.log(result)
+    // payment.then((result) => {
+    //     console.log(result)
 
-    }).catch((result) => {
-        console.log(result)
-    })
+    // }).catch((result) => {
+    //     console.log(result)
+    // })
   
 
 // *******************
@@ -195,17 +195,134 @@ console.log(group);
 //Focus: Understanding Asynchronous JavaScript
 
     //Promises continued
+    // const paymentCompleted = new Promise((resolve, reject) => {
+    //     result = true;
 
-    //async/await
+    //     if (result) {
+    //         resolve("Payment successful!")
+    //     } else {
+    //         reject("Payment failed!")
+    //     }
+    // });
+
+    // paymentCompleted.then((paymentResult => console.log(paymentResult))).catch(paymentResult => console.log(paymentResult));
+
+
+    function fetchUser() {
+        return new Promise((resolve, reject) => {
+
+            const isSuccess = true; 
+
+            if (!isSuccess) {
+                reject("Failed to fetch user data.");
+
+            }else{
+                setTimeout(() => {
+                    const userData = {
+                        name: "Ezekiel",
+                        age: 20,
+                        email: "ezekiel@example.com"
+                    };
+                    resolve(userData);
+                }, 2000);
+            }
+        });
+    }
+
+    function fetchPost() {
+        return new Promise((resolve, reject) => {
+
+            const isSuccess = false; 
+
+            if (!isSuccess) {
+                reject("Failed to fetch post data.");
+
+            }else{
+                setTimeout(() => {
+                    const postData = {
+                        name: "Ezekiel",
+                        post: "i love javascript"
+                    };
+                    resolve(postData);
+                }, 3000);
+            }
+        });
+    }
+
+
+
+    // ------ bad way to handle more than one promise
+
+    async function fetchData() {
+
+        try{
+            const user = await fetchUser();
+            const post = await fetchPost();
+
+            console.log(user);
+            console.log(post);
+
+        }catch(error) {
+            console.error(error);
+        }
+    }
+
+    fetchData();
+
+
+    Promise.all([fetchUser(), fetchPost()])
+        .then(([user, post]) => {
+            console.log(user);
+            console.log(post);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+    Promise.allSettled([fetchUser(), fetchPost()])
+        .then(([user, post]) => {
+
+            if (user.status === "fulfilled" || post.status === "fulfilled") {
+                console.log(user.value, post.value);
+            } else {
+                console.error(user.reason || post.reason);
+            }
+        })
+    
+
+
+
+
+
+// *******************
+    // class 5
+// *******************
 
     //Fetch API
 
     //Error Handling
 
-    // API Consumption
-
-    //Event Loop Overview
-
     //Mini Practice Project
 
-        //url to get dummy user data: https://jsonplaceholder.typicode.com/posts
+       
+        //url to get dummy user data:
+        // https://jsonplaceholder.typicode.com/users
+        // https://jsonplaceholder.typicode.com/posts
+        // https://jsonplaceholder.typicode.com/comments
+
+
+ // assignments:
+
+    // Tips
+        // 1. Use the Fetch API to make the API requests and handle the responses.
+        // 2. Use async/await to handle the asynchronous API request.
+        // 3. Use Promise.all to fetch multiple API endpoints simultaneously and display the results on the web page.
+        // 4. Use Promise.allSettled to handle multiple API requests and display the results, including any errors, on the web page.
+        // 5. Implement error handling to display an error message if the API request fails.
+
+    // Tasks
+        //1. Use destructuring to extract: name, email, username
+        //2. What is the total number of user, post and comments
+        //3. dispay an array of users and number of post
+        //4. Fetch users and posts simultaneously using:
+        //5. write an async function loadDashboard() to show all user details, post and comments
