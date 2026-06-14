@@ -251,43 +251,43 @@ console.log(group);
 
 
 
-    // ------ bad way to handle more than one promise
+    // // ------ bad way to handle more than one promise
 
-    async function fetchData() {
+    // async function fetchData() {
 
-        try{
-            const user = await fetchUser();
-            const post = await fetchPost();
+    //     try{
+    //         const user = await fetchUser();
+    //         const post = await fetchPost();
 
-            console.log(user);
-            console.log(post);
+    //         console.log(user);
+    //         console.log(post);
 
-        }catch(error) {
-            console.error(error);
-        }
-    }
+    //     }catch(error) {
+    //         console.error(error);
+    //     }
+    // }
 
-    fetchData();
+    // fetchData();
 
 
-    Promise.all([fetchUser(), fetchPost()])
-        .then(([user, post]) => {
-            console.log(user);
-            console.log(post);
-        })
-        .catch((error) => {
-            console.error(error);
-        });
+    // Promise.all([fetchUser(), fetchPost()])
+    //     .then(([user, post]) => {
+    //         console.log(user);
+    //         console.log(post);
+    //     })
+    //     .catch((error) => {
+    //         console.error(error);
+    //     });
 
-    Promise.allSettled([fetchUser(), fetchPost()])
-        .then(([user, post]) => {
+    // Promise.allSettled([fetchUser(), fetchPost()])
+    //     .then(([user, post]) => {
 
-            if (user.status === "fulfilled" || post.status === "fulfilled") {
-                console.log(user.value, post.value);
-            } else {
-                console.error(user.reason || post.reason);
-            }
-        })
+    //         if (user.status === "fulfilled" || post.status === "fulfilled") {
+    //             console.log(user.value, post.value);
+    //         } else {
+    //             console.error(user.reason || post.reason);
+    //         }
+    //     })
     
 
 
@@ -300,12 +300,60 @@ console.log(group);
 
     //Fetch API
 
+    // client -> api -> server -> database
+
+    // fetch("https://jsonplaceholder.typicode.com/users", {
+
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+
+    //     body: JSON.stringify({
+    //         name: "Ezekiel",
+    //         email: "ayebidunezekiel@gmail.com"
+    //     })  
+    // })
+    // .then(result => result.json())
+    // .then(usersData => console.log(usersData))
+    // .catch(error => console.error(error))
+    // .finally(()=> console.log("operation completed"));
+
+
+
+    // cleaner version using async/await
+    async function updateUser(id, userData) {
+        try {
+                    
+        const result = await fetch(`https://jsonplaceholder.typicode.com/user/`)
+
+        if(!result.ok) throw new Error("unable to fetch users");
+                    
+        const userData = await result.json();
+        console.log(userData)
+            
+        } catch (err) {
+            console.log(err);
+            throw err;
+        }
+
+            
+
+    }
+
+    updateUser(1, {"name": "update Ezekiel"});
+
+
+
+
+
+
     //Error Handling
 
     //Mini Practice Project
 
        
-        //url to get dummy user data:
+        //url to get dummy data:
         // https://jsonplaceholder.typicode.com/users
         // https://jsonplaceholder.typicode.com/posts
         // https://jsonplaceholder.typicode.com/comments
