@@ -5,6 +5,7 @@ Create a user object, create an assets array,
 Update user object array by putting the assets.
 - Hint: Use rest or spread  */
 
+/*
 const user = 
     {
         name:'John', 
@@ -42,4 +43,12 @@ const addedNumbers = numbers.map((item) => item + 2)
 console.log(...addedNumbers)
 
 
- 
+
+ async function getUser(){
+    const result = await  fetch("https://jsonplaceholder.typicode.com/users")
+    const message = await result.json()
+    //const res = console.log(message)
+    return console.log(message)
+ }
+
+ getUser()
