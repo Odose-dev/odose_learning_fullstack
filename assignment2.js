@@ -51,7 +51,7 @@ async function getUsers() {
             })
           );
        //Task 1
-          console.log("Destructured Data:", destructuredUsers);
+      //    console.log("Destructured Data:", destructuredUsers);
         } else {
           console.log("Could not load users");
         }
@@ -79,11 +79,11 @@ async function getUsers() {
           }));
           
           //Task 3
-          console.log("Users with Count of Post:", usersWithCountOfPost);
+       //   console.log("Users with Count of Post:", usersWithCountOfPost);
 
           //Task 4
-          console.log("Users List:", usersResult);
-          console.log("Posts List:", postsResult);
+     //     console.log("Users List:", usersResult);
+     //     console.log("Posts List:", postsResult);
         }
   
         if (
@@ -96,23 +96,35 @@ async function getUsers() {
           const commentsCount = comments.value.length;
   
           //Task 2
-          console.log("Count of Users:", usersCount);
-          console.log("Count of Posts:", postsCount);
-          console.log("Count of Comments:", commentsCount);
+      //    console.log("Count of Users:", usersCount);
+      //    console.log("Count of Posts:", postsCount);
+       //   console.log("Count of Comments:", commentsCount);
   
           //Task 5 (This is very difficult. Got some clue from ChatGPT but still not clear for me)
+
+          const all = posts.value.filter((user, post, comment) => user.id == post.userId && posts.id == comment.postId)
+          console.log(all)
           const dashboardLoader = users.value.map(user => {
-            const userPosts = posts.value.filter(
-              post => post.userId === user.id
-            )
-  
+            const userPosts = posts.value.filter(post => post.userId === user.id)
+              .map(post => {
+                const postComments = comments.value.filter(
+                  comment => comment.postId === post.id
+                );
+          
+                return {
+                  ...post,
+                  comments: postComments
+                };
+              });
+          
             return {
               ...user,
               posts: userPosts
             };
           });
   
-          console.log("Dashboard Loader: ", dashboardLoader);        }
+         // console.log("DASHBOARD LOADER ",JSON.stringify(dashboardLoader, null, 2)); 
+             }
       });
   }
   
