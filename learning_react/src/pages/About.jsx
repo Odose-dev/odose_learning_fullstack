@@ -2,16 +2,13 @@ import {useState} from "react";
 
 export default function About() {
 
-     const [name, setName] = useState('Ezekiel');
+    const [name, setName] = useState('Ezekiel');
 
-
-    
     function handleUpdate(e) {
 
         e.preventDefault();
         setName(e.target.value);
     }
-
 
   return (
     <div>
