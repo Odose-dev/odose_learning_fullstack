@@ -1,4 +1,6 @@
 import {useState} from "react";
+import "../components/css/about.css";
+import Form from "../components/form/Form.jsx"
 
 export default function About() {
 
@@ -10,29 +12,17 @@ export default function About() {
         setName(e.target.value);
     }
 
-  return (
-    <div>
-      <h1>About Page</h1>
-      <p>This is the about page of our React application.</p>
-      <p>Name: {name}</p>
+    return (
+        <div className="about">
+            <h1>About Page</h1>
+            <p>This is the about page of our React application.</p>
+            <p>Name: {name}</p>
 
+            <br />
+            <br />
 
-        <br />
-          <br />
+            <Form name={name} handleUpdate={handleUpdate} />
 
-      <form>
-        <label htmlFor="name"> Update Name:</label>
-
-        <input
-          type="text"
-          id="name"
-          defaultValue={name}
-          onChange={handleUpdate}
-        />
-
-        {/* <button onclick={handleUpdate} type="submit">Update</button>         */}
-
-      </form>
-    </div>
-  );
+        </div>
+    );
 }
