@@ -9,9 +9,9 @@ export default function App() {
     return (
         <>
             <Header />
-            <Main />
-            <About />
-            <Contact />
+            <Main>
+                <h1>Welcome to My App</h1>
+            </Main>
             <Footer />
         </>
     );

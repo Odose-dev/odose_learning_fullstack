@@ -2,3 +2,16 @@
     padding: 10px;
     height: 80vh;
 }
+
+
+.counter-box {
+    font-size: 30px;
+    font-weight: bold;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #dddddd;
+}
