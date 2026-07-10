@@ -1,7 +1,19 @@
+import {useState } from 'react';
+
 export default function Login() {
+
+ 
+    const  [isLoggedIn, setIsLoggedIn] =  useState(true);
+
+    function handleLoginClick(){
+        setIsLoggedIn(!isLoggedIn)
+    }
+
     return (
         <div>
-            <h1>Login</h1>
+         <button className='btn' onClick={handleLoginClick}> 
+            {isLoggedIn ? "Logout" : "Login"}
+            </button>   
         </div>
     );
 }
