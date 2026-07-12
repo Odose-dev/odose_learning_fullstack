@@ -1,4 +1,4 @@
-export default function Table ({tableStyle}){
+export default function Table ({tableStyle, students}){
     return (
 
         <table border='1' style={tableStyle}>
@@ -7,15 +7,26 @@ export default function Table ({tableStyle}){
                     <td>First name </td>
                     <td>Last Name</td>
                     <td>Email </td>
+                    <td>Password </td>
+                    <td>Confirm Password </td>
+                    <td>Action</td>
                 
             </thead>
 
             <tbody>
-            <tr>
-                    <td>Odose</td>
-                    <td>Esese </td>
-                    <td>great@example.com </td>
-                </tr>
+
+            {students.map((student, index) => {
+                return (
+                    <tr key={index}>
+                        <td>{student.firstName}</td>
+                        <td>{student.lastName}</td>
+                        <td>{student.email}</td>
+                        <td>{student.password}</td>
+                        <td>{student.confirmPassword}</td>
+                        <td> <button>❌</button></td>
+                    </tr>
+                )
+            })}
             </tbody>
         </table>
     )
