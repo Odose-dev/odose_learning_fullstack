@@ -4,7 +4,7 @@ const router = express.Router();
 
 //index routes
 router.get("/", (req, res) => {
-  res.send("Welcome to our API v1");
+  res.send("Welcome to our API v2");
 });
 
 export default router;
